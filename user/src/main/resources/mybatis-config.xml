@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+
+    <!-- 引入外部资源配置文件 -->
+    <properties resource="classpath:db.properties"/>
+
+    <!-- 全局的配置 -->
+    <settings>
+        <!--日志技术-->
+        <setting name="logImpl" value="log4j"/>
+
+        <!--开启延迟加载功能-->
+        <setting name="lazyLoadingEnabled" value="true"/>
+        <!--设置不要积极地去查询关联对象-->
+        <setting name="aggressiveLazyLoading" value="false"/>
+        <!--延迟加载触发的方法-->
+        <setting name="lazyLoadTriggerMethods" value="clone"/>
+
+        <!--启用二级缓存，缺省已经开启-->
+        <setting name="cacheEnabled" value="true"/>
+    </settings>
+
+    <plugins>
+        <!-- 分页助手 -->
+        <plugin interceptor="com.github.pagehelper.PageInterceptor">
+            <!--<property name="dialect" value="mysql"/>-->
+            <!-- 设置为true时，使用RowBounds分页会进行count查询 -->
+            <!--<property name="rowBoundsWithCount" value="true"/>-->
+        </plugin>
+    </plugins>
+
+    <!-- 配置环境，制定数据库连接信息 -->
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="${jdbc.driver}"/>
+                <property name="url" value="${jdbc.url}"/>
+                <property name="username" value="${jdbc.username}"/>
+                <property name="password" value="${jdbc.password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+</configuration>
