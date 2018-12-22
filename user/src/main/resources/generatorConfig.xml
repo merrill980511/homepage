@@ -38,7 +38,7 @@
             targetPackage     指定生成的model生成所在的包名
             targetProject     指定在该项目下所在的路径
         -->
-        <javaModelGenerator targetPackage="com.merrill.information.dao.entity" targetProject="src/main/java">
+        <javaModelGenerator targetPackage="com.merrill.dao.entity" targetProject="src/main/java">
             <!-- 是否对model添加 构造函数 -->
             <property name="constructorBased" value="false"/>
 
@@ -46,7 +46,7 @@
             <property name="enableSubPackages" value="false"/>
 
             <!-- 建立的Model对象是否 不可改变  即生成的Model对象不会有 setter方法，只有构造方法 -->
-            <property name="immutable" value="true"/>
+            <property name="immutable" value="false"/>
 
             <!-- 是否对类CHAR类型的列的数据进行trim操作 -->
             <property name="trimStrings" value="true"/>
@@ -63,7 +63,7 @@
                 type="MIXEDMAPPER",生成基于注解的Java Model 和相应的Mapper对象
                 type="XMLMAPPER",生成SQLMap XML文件和独立的Mapper接口
         -->
-        <javaClientGenerator targetPackage="com.merrill.information.dao.mapper" targetProject="src/main/java"
+        <javaClientGenerator targetPackage="com.merrill.dao.mapper" targetProject="src/main/java"
                              type="MIXEDMAPPER">
             <property name="enableSubPackages" value="false"/>
             <!--
@@ -75,15 +75,15 @@
                     注意：如果 targetRuntime="MyBatis3",此参数被忽略
              -->
             <property name="exampleMethodVisibility" value=""/>
-            <!--方法名计数器Important note: this property is ignored if the target runtime is MyBatis3.-->
+            <!-- 方法名计数器Important note: this property is ignored if the target runtime is MyBatis3.-->
             <property name="methodNameCalculator" value=""/>
 
-            <!--为生成的接口添加父接口-->
+            <!-- 为生成的接口添加父接口 -->
             <property name="rootInterface" value="Mapper"/>
 
         </javaClientGenerator>
 
-        <table tableName="user" domainObjectName="User"
+        <table tableName="picture_module" domainObjectName="PictureModule"
                enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false">

@@ -6,21 +6,21 @@
 
 
     <!-- 引入外部资源配置文件 -->
-    <properties resource="classpath:db.properties"/>
+    <properties resource="db.properties"/>
 
     <!-- 全局的配置 -->
     <settings>
-        <!--日志技术-->
+        <!-- 日志技术 -->
         <setting name="logImpl" value="log4j"/>
 
-        <!--开启延迟加载功能-->
+        <!-- 开启延迟加载功能 -->
         <setting name="lazyLoadingEnabled" value="true"/>
-        <!--设置不要积极地去查询关联对象-->
+        <!-- 设置不要积极地去查询关联对象 -->
         <setting name="aggressiveLazyLoading" value="false"/>
-        <!--延迟加载触发的方法-->
+        <!-- 延迟加载触发的方法 -->
         <setting name="lazyLoadTriggerMethods" value="clone"/>
 
-        <!--启用二级缓存，缺省已经开启-->
+        <!-- 启用二级缓存，缺省已经开启 -->
         <setting name="cacheEnabled" value="true"/>
     </settings>
 

@@ -16,11 +16,11 @@
         <property name="locations" value="classpath:db.properties"/>
     </bean>
 
-    <!--DI注解解析-->
+    <!-- DI注解解析 -->
     <context:annotation-config/>
-    <!--IoC注解解析-->
+    <!-- IoC注解解析 -->
     <context:component-scan base-package="com.merrill"/>
-    <!--AOP注解解析器-->
+    <!-- AOP注解解析器 -->
     <aop:aspectj-autoproxy/>
     <!-- 默认为jdk方式配置，以下方式为配置cglib的方法 -->
     <!--<aop:aspectj-autoproxy proxy-target-class="true"/>-->

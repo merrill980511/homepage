@@ -16,7 +16,7 @@
     diskPersistent：是否在VM重启时存储硬盘的缓存数据。默认值是false。
     diskExpiryThreadIntervalSeconds：磁盘失效线程运行时间间隔，默认是120秒。
     -->
-    <!--默认的cache配置，相当于是公共的，如果没有设置使用哪一个缓存区域，就使用该默认的区域-->
+    <!-- 默认的cache配置，相当于是公共的，如果没有设置使用哪一个缓存区域，就使用该默认的区域 -->
     <defaultCache
             maxElementsInMemory="10000"
             eternal="false"
