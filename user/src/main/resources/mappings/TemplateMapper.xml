@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.merrill.dao.mapper.TemplateMapper">
+    <cache type="org.mybatis.caches.ehcache.EhcacheCache"/>
+    <resultMap id="Template" type="Template">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="location" property="location"/>
+        <result column="content" property="content"/>
+        <result column="status" property="status"/>
+        <collection property="modules" ofType="Module">
+            <id column="m_id" property="id"/>
+            <result column="m_name" property="name"/>
+            <result column="m_content" property="content"/>
+            <result column="m_location" property="location"/>
+            <result column="m_status" property="status"/>
+        </collection>
+    </resultMap>
+
+    <sql id="selectBase">
+        SELECT t.id,
+               t.content,
+               t.status,
+               t.location,
+               t.name,
+               m.id       AS m_id,
+               m.name     AS m_name,
+               m.content  AS m_content,
+               m.location AS m_location,
+               m.status   AS m_status
+        FROM template t
+                 LEFT JOIN module m ON t.id = m.template_id
+    </sql>
+
+    <insert id="saveTemplate">
+        INSERT INTO template(name, content, location, user_id, status)
+        VALUES
+            (#{name}, #{content}, #{location}, #{userId}, #{status})
+    </insert>
+    <insert id="saveModule">
+        INSERT INTO module(name, content, location, template_id, status)
+        VALUES
+            (#{name}, #{content}, #{location}, #{templateId}, #{status})
+    </insert>
+    <update id="updateContent">
+        UPDATE template
+        SET content = #{content}
+        WHERE id = #{templateId}
+    </update>
+    <update id="updateTemplateStatus">
+        UPDATE template
+        SET status = #{status}
+        WHERE user_id = #{userId}
+    </update>
+    <update id="updateModuleStatus">
+        UPDATE module
+        SET status = #{status}
+        WHERE template_id = #{templateId}
+    </update>
+    <update id="updateTemplateLocation">
+        UPDATE template
+        SET location = #{location}
+        WHERE id = #{templateId}
+    </update>
+    <delete id="deleteModuleByTemplateId">
+        DELETE
+        FROM module
+        WHERE template_id = #{templateId}
+    </delete>
+    <delete id="deleteTemplateById">
+        DELETE
+        FROM template
+        WHERE id = #{templateId}
+    </delete>
+    <select id="getLastInsertId" resultType="long">
+        SELECT LAST_INSERT_ID()
+    </select>
+    <select id="getTemplateById" resultMap="Template">
+        <include refid="selectBase"/>
+        WHERE t.id = #{id}
+    </select>
+    <select id="listTemplateId" resultType="long">
+        SELECT id
+        FROM template
+        WHERE user_id = #{userId}
+    </select>
+    <select id="getTemplateByUserIdAndStatus" resultMap="Template">
+        <include refid="selectBase"/>
+        WHERE t.user_id = #{userId} AND t.status = #{status}
+    </select>
+
+</mapper>

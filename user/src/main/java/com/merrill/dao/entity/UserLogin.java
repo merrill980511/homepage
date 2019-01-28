@@ -2,7 +2,6 @@ package com.merrill.dao.entity;
 
 import lombok.Data;
 import org.hibernate.validator.constraints.Email;
-import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.Column;
@@ -21,20 +20,25 @@ import java.io.Serializable;
 @Table(name = "user_login")
 @Data
 public class UserLogin implements Serializable {
+    //自动生成的用户id
     @Id
     private Long id;
 
-    @Column
+    //用户邮箱
+    @Column(unique = true)
     @NotBlank(message = "邮箱不能为空")
     @Email(message = "邮箱格式有误")
     private String email;
 
+    //用户密码
     @Column
     @NotBlank(message = "密码不能为空")
     private String password;
 
+    //用户状态
     @Column
     private int status;
 
+    //验证码
     private String code;
 }

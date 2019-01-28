@@ -2,11 +2,66 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.merrill.dao.mapper.UserMapper">
     <cache type="org.mybatis.caches.ehcache.EhcacheCache"/>
-    <insert id="register">
-        INSERT INTO user_info(email, password) VALUES (#{email}, #{password})
+    <insert id="addUserLogin" parameterType="UserLogin">
+        INSERT INTO user_login(email, password)
+        VALUES (#{email}, #{password})
     </insert>
-    <select id="getUserByEmail" resultType="UserInfo">
-        SELECT * FROM user_info WHERE email = #{email}
+    <insert id="addUserIdByEmail">
+        INSERT INTO user_info(id, email)
+        VALUES (#{id}, #{email})
+    </insert>
+    <insert id="addUserInfo">
+        UPDATE user_info SET name = #{name}, gender = #{gender},
+        birth = #{birth}, office = #{office},
+        title = #{title}, department = #{department}, phone = #{phone}
+        <if test="nameEnglish != null">
+            , name_english = #{nameEnglish}
+        </if>
+        <if test="titleEnglish != null">
+            , title_english = #{titleEnglish}
+        </if>
+        <if test="officeEnglish != null">
+            , office_english = #{officeEnglish}
+        </if>
+        WHERE email = #{email}
+    </insert>
+    <update id="updateUrlByEmail">
+        UPDATE user_info
+        SET url = #{url}
+        WHERE email = #{email}
+    </update>
+    <update id="updateImageByUserId">
+        UPDATE user_info
+        SET photo = #{fileName}
+        WHERE id = #{userId}
+    </update>
+    <select id="getUserLoginByEmail" resultType="UserLogin">
+        SELECT *
+        FROM user_login
+        WHERE email = #{email}
+    </select>
+    <select id="getLastInsertId" resultType="long">
+        SELECT LAST_INSERT_ID()
+    </select>
+    <select id="getUserInfoByUrl" resultType="UserInfo">
+        SELECT *
+        FROM user_info
+        WHERE url = #{url}
+    </select>
+    <select id="getUrlByEmail" resultType="string">
+        SELECT url
+        FROM user_info
+        WHERE email = #{email}
+    </select>
+    <select id="getUserInfoByEmail" resultType="UserInfo">
+        SELECT *
+        FROM user_info
+        WHERE email = #{loginUserEmail}
+    </select>
+    <select id="getPhotoByEmail" resultType="String">
+        SELECT photo
+        FROM user_info
+        WHERE email = #{email}
     </select>
 
 </mapper>

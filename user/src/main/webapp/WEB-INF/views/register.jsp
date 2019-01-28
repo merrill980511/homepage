@@ -13,13 +13,14 @@
     <title>用户注册</title>
     <link rel="stylesheet" href="/css/register.css" type="text/css">
     <script type="text/javascript" src="/js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="/js/md5.js"></script>
     <script type="text/javascript" src="/js/register.js"></script>
 </head>
 <body>
 <div id="frame">
     <div id="logo">欢迎注册HomePage</div>
     <div id="form">
-        <div class="info"><input type="text" placeholder="请输入邮箱" id="email"/>
+        <div class="info"><input type="text" placeholder="请输入邮箱" id="email" autofocus/>
             <div class="errorMessage"><img src="/images/error.png"><label></label></div>
         </div>
         <div class="info"><input type="password" placeholder="请输入密码" id="pwd" maxlength="16"/>

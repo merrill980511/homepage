@@ -19,21 +19,71 @@
     <!-- 默认的cache配置，相当于是公共的，如果没有设置使用哪一个缓存区域，就使用该默认的区域 -->
     <defaultCache
             maxElementsInMemory="10000"
-            eternal="false"
-            timeToIdleSeconds="3"
-            timeToLiveSeconds="5"
-            overflowToDisk="true"/>
+            maxElementsOnDisk="0"
+            eternal="true"
+            overflowToDisk="true"
+            diskPersistent="false"
+            timeToIdleSeconds="0"
+            timeToLiveSeconds="0"
+            diskSpoolBufferSizeMB="50"
+            diskExpiryThreadIntervalSeconds="120"
+            memoryStoreEvictionPolicy="LFU"
+    />
+    <!-- 登录记录缓存 锁定10分钟 -->
+    <cache name="passwordRetryCache"
+           maxEntriesLocalHeap="2000"
+           eternal="false"
+           timeToIdleSeconds="3600"
+           timeToLiveSeconds="0"
+           overflowToDisk="false"
+           statistics="true">
+    </cache>
+    <cache name="authorizationCache"
+           maxEntriesLocalHeap="2000"
+           eternal="false"
+           timeToIdleSeconds="3600"
+           timeToLiveSeconds="0"
+           overflowToDisk="false"
+           statistics="true">
+    </cache>
+    <cache name="authenticationCache"
+           maxEntriesLocalHeap="2000"
+           eternal="false"
+           timeToIdleSeconds="3600"
+           timeToLiveSeconds="0"
+           overflowToDisk="false"
+           statistics="true">
+    </cache>
+    <cache name="shiro-activeSessionCache"
+           maxEntriesLocalHeap="2000"
+           eternal="false"
+           timeToIdleSeconds="3600"
+           timeToLiveSeconds="0"
+           overflowToDisk="false"
+           statistics="true">
+    </cache>
+    <cache name="shiro_cache"
+           maxElementsInMemory="2000"
+           maxEntriesLocalHeap="2000"
+           eternal="false"
+           timeToIdleSeconds="0"
+           timeToLiveSeconds="0"
+           maxElementsOnDisk="0"
+           overflowToDisk="true"
+           memoryStoreEvictionPolicy="FIFO"
+           statistics="true">
+    </cache>
 
     <!--
     相当于自定义区域的cache
       name为mapper的全限定名
     -->
     <!--<cache-->
-            <!--name="com.merrill.mybatis.hello.mapper.TeacherMapper"-->
-            <!--maxElementsInMemory="10000"-->
-            <!--eternal="true"-->
-            <!--timeToIdleSeconds="300"-->
-            <!--timeToLiveSeconds="600"-->
-            <!--overflowToDisk="true"/>-->
+    <!--name="com.merrill.mybatis.hello.mapper.TeacherMapper"-->
+    <!--maxElementsInMemory="10000"-->
+    <!--eternal="true"-->
+    <!--timeToIdleSeconds="300"-->
+    <!--timeToLiveSeconds="600"-->
+    <!--overflowToDisk="true"/>-->
 
 </ehcache>

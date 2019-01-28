@@ -17,15 +17,18 @@
         <property name="suffix" value=".jsp"/>
     </bean>
 
-    <!--&lt;!&ndash;注册拦截器&ndash;&gt;-->
+    <!--注册拦截器-->
     <!--<mvc:interceptors>-->
         <!--<mvc:interceptor>-->
             <!--<mvc:mapping path="/**"/>&lt;!&ndash;拦截/**下的所有方法&ndash;&gt;-->
             <!--&lt;!&ndash;<mvc:exclude-mapping path="/information/login"/>&lt;!&ndash;可以选择不拦截登录和添加以及其他的方法，根据情况自己定&ndash;&gt;&ndash;&gt;-->
-            <!--<bean class="com.merrill.infomationmation.web.information.interceptor.LogInterceptor"/>-->
+            <!--<bean class=""/>-->
         <!--</mvc:interceptor>-->
     <!--</mvc:interceptors>-->
 
-    <mvc:view-controller path="/" view-name="user/login"/>
+    <!--<mvc:view-controller path="/" view-name="user/login"/>-->
     <!--<mvc:view-controller path="/" view-name="user/user/login"/>-->
+
+    <!--引入shiro配置文件-->
+    <import resource="classpath:applicationContext-shiro.xml"></import>
 </beans>

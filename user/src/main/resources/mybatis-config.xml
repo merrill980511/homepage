@@ -22,6 +22,9 @@
 
         <!-- 启用二级缓存，缺省已经开启 -->
         <setting name="cacheEnabled" value="true"/>
+
+        <!--驼峰-->
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
     </settings>
 
     <plugins>

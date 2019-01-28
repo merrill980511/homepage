@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
  * User: 梅峰鑫
  * Date: 2018-12-21
  * Time: 19:24
- * Description: 用来存储相关的信息，方便转换成json
+ * Description: 用来存储后端返回信息，方便转换成json
  */
 
 @Data

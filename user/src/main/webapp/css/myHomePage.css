@@ -1,0 +1,108 @@
+body{
+    margin: 0px;
+}
+#header{
+    width: 1200px;
+    background: url("/images/logo.jpg") no-repeat;
+    height: 132px;
+    margin: 0 auto;
+}
+#header>a{
+    float: right;
+    line-height: 132px;
+    text-decoration: none;
+    color: #666666;
+}
+#body{
+    width: 100%;
+    background: url("/images/bgImg.png") no-repeat;
+    overflow: hidden;
+}
+#info{
+    width: 1140px;
+    margin: 0 auto;
+    padding: 45px;
+}
+#mainInfo,#detailInfo{
+
+}
+#mainInfo{
+    height: 339px;
+}
+#detailInfo{
+    width: 1120px;
+    padding: 10px;
+}
+#mainInfo_left,#mainInfo_right{
+    display: inline-block;
+}
+#mainInfo_right{
+    float: right;
+    margin-left: 10px;
+    padding: 10px 30px;
+    width: 850px;
+}
+#sculpture{
+    width: 200px;
+    height: 280px;
+    border: 10px solid #f8f8f8;
+}
+#mainInfo_right_top{
+    height: 170px;
+    color: #fff;
+    text-align: left;
+}
+#mainInfo_right_top>div{
+    width: 906px;
+}
+#mainInfo_right_content{
+    float: left;
+    padding: 20px 0px;
+}
+#name{
+    font-size: 50px;
+}
+#title{
+    font-size: 28px;
+}
+#department{
+    font-size: 18px;
+}
+.basicInfo{
+    padding: 2px;
+    margin-bottom: 5px;
+}
+.otherInfo{
+    padding: 2px;
+    height: 30px;
+    line-height: 30px;
+    width: 250px;
+    color: #6b6b6b;
+    display: inline-block;
+    border-bottom: 1px dotted #ccc;
+}
+.detailInfo{
+    margin-bottom: 30px;
+}
+.detailInfo_top{
+    color: #555;
+    font-size: 21px;
+    padding: 10px;
+    border-bottom: 1px dotted #ccc;
+    margin-bottom: 15px;
+}
+.slidToggle{
+    width: 25px;
+    height: 25px;
+    background-color: rgba(255,255,255,0);
+    float: right;
+    border:1px solid #ccc;
+}
+.slidToggle:active{
+    border:2px solid #ccc;
+    border-style: inset;
+}
+.detailInfo_content{
+    padding: 10px;
+    font-size: 14px;
+}

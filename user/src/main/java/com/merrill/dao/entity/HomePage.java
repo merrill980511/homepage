@@ -2,6 +2,7 @@ package com.merrill.dao.entity;
 
 import lombok.Data;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -13,7 +14,7 @@ import java.util.List;
  */
 
 @Data
-public class HomePage {
+public class HomePage implements Serializable {
     /**
      * 存储页面上部分的用户信息
      */

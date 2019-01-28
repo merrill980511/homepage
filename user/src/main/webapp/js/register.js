@@ -4,7 +4,17 @@ $(function(){
 	var re_pwd = $("#re_pwd");
 	var code = $("#code");
 	var getCode = $("#getCode");
-	var registerAction = $("registerAction");
+	var registerAction = $("#registerAction");
+    //回车
+    $(document).on("keydown",function(event){
+        if(event.keyCode ==13){
+            $("#registerAction").click();
+        }
+    });
+	//邮箱获得焦点
+    email.on("focus",function(){
+        email.next().hide();
+    });
 	//邮箱失去焦点
 	email.on("blur",function(){
 		if(!checkEmail(email)){
@@ -14,6 +24,10 @@ $(function(){
 			email.next().hide();
 		}
 	});
+	//密码获得焦点
+    pwd.on("focus",function() {
+        pwd.next().hide();
+    });
 	//密码失去焦点
 	pwd.on("blur",function(){
 		if(pwd.val().length<8||pwd.val().length>16){
@@ -23,6 +37,10 @@ $(function(){
 			pwd.next().hide();
 		}
 	});
+	//重输密码获得焦点
+    re_pwd.on("focus",function() {
+        re_pwd.next().hide();
+    });
 	//重输密码失去焦点
 	re_pwd.on("blur",function(){
 		if(checkPwd(pwd,re_pwd)){
@@ -34,12 +52,14 @@ $(function(){
 	});
 	//点击获取验证码
 	getCode.on("click",function(){
+        getCode.next().hide();
 	    setMessage();
 	    checkCodeSend(email);
     });
 	//点击注册
 	registerAction.on("click",function(){
-		registerAction(email,pwd,code);
+        registerAction.next().hide();
+        sendRegister(email,pwd,code);
 	});
 	//获取验证码倒计时
 	function setMessage(){
@@ -52,7 +72,7 @@ $(function(){
 				   color:'#fff',
 				   });
 			   clearInterval(count);
-			   } else {
+			   }else {
 				   getCode.attr('disabled', true);
 				   getCode.css({
 					   background: '#d8d8d8',
@@ -83,10 +103,13 @@ $(function(){
 	//检测邮箱是否重复
 	function checkEmailNotRepeat(email){
 		$.ajax({
-			"url":"/user/emailCommit",
-			"type":"post",
-			"data":{"email":email.val()},
-			"dataType":"json",
+            "url": "/user/register/emailCommit",
+            "method": "POST",
+            "headers": {
+                "Content-Type": "application/json",
+            },
+            "data": "{\"email\":\""+email.val()+"\"}",
+            "dataType":"json",
 			"success":function(data){
 				if(data.message=="true"){
 					return true;
@@ -106,9 +129,12 @@ $(function(){
 	//检测验证码发送
 	function checkCodeSend(email){
 		$.ajax({
-			"url":"/user/verificationCodeCommit",
-			"type":"post",
-			"data":{"email":email.val()},
+			"url":"/user/register/verificationCodeCommit",
+			"method":"post",
+            "headers": {
+                "Content-Type": "application/json",
+            },
+            "data": "{\"email\":\""+email.val()+"\"}",
 			"dataType":"json",
 			"success":function(data){
 				if(data.message == "true"){
@@ -127,14 +153,18 @@ $(function(){
 		});
 	};
 	//注册动作
-	function registerAction(email,pwd,code){
+	function sendRegister(email,pwd,code){
 		$.ajax({
-			"url":"/user/registerCommit",
-			"type":"post",
-			"data":{"email":email.val(),"password":pwd.val(),"code":code.val()},
+			"url":"/user/register/commit",
+			"method":"post",
+            "headers": {
+                "Content-Type": "application/json",
+            },
+			"data":"{\"email\":\""+email.val()+"\",\"password\":\""+hex_md5(pwd.val())+"\",\"code\":\""+code.val()+"\"}",
 			"dataType":"json",
 			"success":function(data){
 				if(data.message == "true"){
+                    location.href="/user/url";
 					return true;
 				}else{
 					registerAction.next().children("label").text(data.message);
@@ -146,7 +176,7 @@ $(function(){
 				registerAction.next().children("label").text("服务器繁忙，请稍后再试");
 				registerAction.next().show();
 				return false;
-			}
+			},
 		});
 	}
 });
