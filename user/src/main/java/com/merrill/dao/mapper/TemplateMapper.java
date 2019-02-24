@@ -56,9 +56,11 @@ public interface TemplateMapper {
      *
      * @param templateId 模块id
      * @param content    待更新的内容
+     * @param name       待更新的标题
      * @return 受影响行数
      */
-    int updateContent(@Param("templateId") Long templateId, @Param("content") String content);
+    int updateContent(@Param("templateId") Long templateId, @Param("content") String content,
+                      @Param("name") String name);
 
     /**
      * 根据模块的id删除与其关联的所有小模块

@@ -28,9 +28,10 @@ public interface ITemplateService {
      *
      * @param templateId 模块的id
      * @param content    模块的内容
+     * @param name    模块的标题
      * @return 返回更新结果
      */
-    boolean updateContent(Long templateId, String content);
+    boolean updateContent(Long templateId, String content, String name);
 
     /**
      * 更新模块中小模块的内容

@@ -512,7 +512,7 @@ $(function () {
         $("#cutImage_left").html(' <input type="button" id="selectSculpture" value="选择图片">\n' +
             '                    <label id="sculptureTips">只支持JPG、JPEG、PNG，大小不超过10M</label>');
         $("#cutImage_right").html('<div id="preview_box" class="previewImg">\n' +
-            '                        <img id="previewImg" src="/images/sculpture.jpg"/>\n' +
+            '                        <img id="previewImg" src="'+$("#sculpture").attr("src")+'"/>\n' +
             '                    </div>');
         $("#previewImg").removeAttr("style")
         $("#previewImg").attr("src",$("#sculpture").attr("src"));
@@ -524,7 +524,7 @@ $(function () {
     function changeSculpture() {
         $("#cutImage_left").html('<div id="cutPanel">' +
             '<div class="bigImg">\n' +
-            '        <img id="srcImg" src="/images/sculpture.jpg"/>\n' +
+            '        <img id="srcImg" src="'+$("#sculpture").attr("src")+'"/>\n' +
             ' </div>\n'+
             '</div>');
        loadSculpture();

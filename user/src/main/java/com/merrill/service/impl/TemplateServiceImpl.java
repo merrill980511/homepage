@@ -50,8 +50,8 @@ public class TemplateServiceImpl implements ITemplateService {
     }
 
     @Override
-    public boolean updateContent(Long templateId, String content) {
-        if (templateMapper.updateContent(templateId, content) > 0) {
+    public boolean updateContent(Long templateId, String content, String name) {
+        if (templateMapper.updateContent(templateId, content, name) > 0) {
             return true;
         }
         return false;
@@ -99,7 +99,7 @@ public class TemplateServiceImpl implements ITemplateService {
 
     @Override
     public boolean updateTemplate(Template template) {
-        return this.updateContent(template.getId(), template.getContent()) &&
+        return this.updateContent(template.getId(), template.getContent(), template.getName()) &&
                 this.updateModules(template.getId(), template.getModules());
     }
 

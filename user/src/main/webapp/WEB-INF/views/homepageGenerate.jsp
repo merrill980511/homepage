@@ -61,7 +61,7 @@
                 </div>
                 <div id="cutImage_right">
                     <div id="preview_box" class="previewImg">
-                        <img id="previewImg" src="/images/sculpture.jpg"/>
+                        <img id="previewImg" src=""/>
                     </div>
                 </div>
                 <div id="cutImage_bottom">

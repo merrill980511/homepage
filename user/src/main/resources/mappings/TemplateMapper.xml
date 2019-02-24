@@ -44,7 +44,7 @@
     </insert>
     <update id="updateContent">
         UPDATE template
-        SET content = #{content}
+        SET content = #{content}, name = #{name}
         WHERE id = #{templateId}
     </update>
     <update id="updateTemplateStatus">
