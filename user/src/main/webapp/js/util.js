@@ -1,6 +1,7 @@
 function dateLoad(date) {
     return new Date(date).Format("yyyy-MM-dd");
 }
+
 function getImageWidth(url,callback){
     var img = new Image();
     img.src = url;
@@ -13,6 +14,7 @@ function getImageWidth(url,callback){
         }
     }
 }
+
 Date.prototype.Format = function (fmt) {
     var o = {
         "M+": this.getMonth() + 1,
