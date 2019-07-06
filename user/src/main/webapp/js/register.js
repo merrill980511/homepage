@@ -129,7 +129,7 @@ $(function(){
 	//检测验证码发送
 	function checkCodeSend(email){
 		$.ajax({
-			"url":"/user/register/verificationCodeCommit",
+			"url":"/user/verificationCode",
 			"method":"post",
             "headers": {
                 "Content-Type": "application/json",
@@ -164,7 +164,7 @@ $(function(){
 			"dataType":"json",
 			"success":function(data){
 				if(data.message == "true"){
-                    location.href="/user/url";
+                    location.href="/user/url/add";
 					return true;
 				}else{
 					registerAction.next().children("label").text(data.message);

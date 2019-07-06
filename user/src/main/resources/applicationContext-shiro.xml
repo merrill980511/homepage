@@ -43,14 +43,14 @@
                 /user/register/** = anon
                 /user/login/commit = anon
                 /page/** = anon
-                /showHomepage = anon
-                /showImage = anon
 
                 /logout = logout
                 /** = authc
             </value>
         </property>
     </bean>
+    <!--/showHomepage = anon-->
+    <!--/showImage = anon-->
 
 
     <!-- 开启aop，对类代理 -->

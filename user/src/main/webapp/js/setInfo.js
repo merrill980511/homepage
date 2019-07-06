@@ -116,7 +116,7 @@ $(function(){
 	//注册动作
 	function sendInfo(name,nameEnglish,gender,birthday,phone){
 		$.ajax({
-			"url":"/user/info/commit",
+			"url":"/user/info/addCommit",
 			"method":"post",
             "headers": {
                 "Content-Type": "application/json",

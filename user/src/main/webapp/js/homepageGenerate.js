@@ -203,7 +203,7 @@ $(function () {
     //小模块获取
     function templateGetCommit(id) {
         var templateGet = null;
-        var url = "/user/template/getTemplate";
+        var url = "/user/template/get";
         $.ajax({
             "url": url,
             "async": false,
@@ -239,7 +239,7 @@ $(function () {
         var id = templateDiv.find(".template_id").val();
         var templateObject = getEditTemplateObject(templateDiv);
         $.ajax({
-            "url": "/user/template/updateTemplate",
+            "url": "/user/template/update",
             "method": "post",
             "headers": {
                 "Content-Type": "application/json",
@@ -266,7 +266,7 @@ $(function () {
     function templateAddCommit(templateDiv) {
         var templateObject = getEditTemplateObject(templateDiv);
         $.ajax({
-            "url": "/user/template/addTemplate",
+            "url": "/user/template/add",
             "method": "post",
             "headers": {
                 "Content-Type": "application/json",
@@ -295,7 +295,7 @@ $(function () {
         if (id == "" || id == "undefined") {
             templateDiv.remove();
         } else {
-            var url = "/user/template/deleteTemplate";
+            var url = "/user/template/delete";
             var idObj = new Object();
             idObj.id = Number(id);
             $.ajax({

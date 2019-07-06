@@ -76,13 +76,4 @@ public class UserRealm extends AuthorizingRealm {
         info.addRoles(roles);
         return info;
     }
-
-    //清除缓存
-    public void clearCached() {
-        //获取当前等的用户凭证，然后清除
-        PrincipalCollection principals = SecurityUtils.getSubject().getPrincipals();
-        super.clearCache(principals);
-    }
-
-
 }

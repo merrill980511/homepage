@@ -70,7 +70,7 @@ public interface IUserService {
      * @param url   用户申请的url
      * @return 返回保存结果
      */
-    boolean addUrl(String email, String url);
+    boolean editUrl(String email, String url);
 
     /**
      * 根据传入的邮箱获取用户的头像保存路径
@@ -86,4 +86,11 @@ public interface IUserService {
      * @param email 用户头像
      */
     void showImage(String email, HttpServletResponse response);
+
+    /**
+     * 根据传入的邮箱进行用户的登出操作
+     *
+     * @return 返回登出结果
+     */
+    boolean logout();
 }

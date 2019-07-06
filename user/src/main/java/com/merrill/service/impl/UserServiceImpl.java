@@ -102,7 +102,7 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
-    public boolean addUrl(String email, String url) {
+    public boolean editUrl(String email, String url) {
         if (userMapper.updateUrlByEmail(email, url) > 0) {
             return true;
         } else {
@@ -128,6 +128,17 @@ public class UserServiceImpl implements IUserService {
             ImageIO.write(image, "jpeg", response.getOutputStream());
         } catch (IOException e) {
             System.out.println(e.getMessage());
+        }
+    }
+
+    @Override
+    public boolean logout() {
+        Subject subject = SecurityUtils.getSubject();
+        try {
+            subject.logout();
+            return true;
+        } catch (Exception e) {
+            return false;
         }
     }
 }

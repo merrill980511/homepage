@@ -5,7 +5,10 @@ import com.merrill.service.IHomepageService;
 import com.merrill.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -27,27 +30,29 @@ public class PageController {
 
     /**
      * 跳转到主页显示页面
+     *
      * @return
      */
     @RequestMapping("/page/*")
-    public String page(){
+    public String page() {
         return "myHomepage";
     }
 
 
     @RequestMapping("/pageNotFound")
-    public String pageNotFound(){
+    public String pageNotFound() {
         return "pageNotFound";
     }
 
     /**
      * 加载主页信息
+     *
      * @param map 封装了需要展示的url信息
      * @return 返回一个页面信息
      */
     @PostMapping("/showHomepage")
     @ResponseBody
-    public HomePage myHomepage(@RequestBody Map<String, String> map){
+    public HomePage myHomepage(@RequestBody Map<String, String> map) {
         String url = map.get("url");
         System.out.println(url);
         return homepageService.getHomepageByUrl(url);
@@ -55,6 +60,7 @@ public class PageController {
 
     /**
      * 显示图片方法
+     *
      * @param request
      * @param response
      */

@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
@@ -37,7 +36,7 @@ public class TemplateController {
      * @param template 整个模块信息
      * @return 返回保存状态和新增的template的id
      */
-    @RequestMapping("/template/addTemplate")
+    @RequestMapping("/template/add")
     @ResponseBody
     public Object addTemplate(@RequestBody Template template) {
         Long id = templateService.saveTemplate(template);
@@ -56,7 +55,7 @@ public class TemplateController {
      * @param map 封装了模块的id
      * @return 返回获取到的整个模块
      */
-    @RequestMapping("/template/getTemplate")
+    @RequestMapping("/template/get")
     @ResponseBody
     public Template getTemplate(@RequestBody Map<String, String> map) {
         Long id = Long.parseLong(map.get("id"));
@@ -69,7 +68,7 @@ public class TemplateController {
      * @param template 封装新模块的所有信息
      * @return 更新信息
      */
-    @RequestMapping("/template/updateTemplate")
+    @RequestMapping("/template/update")
     @ResponseBody
     public Object updateTemplate(@RequestBody Template template) {
         if (templateService.updateTemplate(template)) {
@@ -104,7 +103,7 @@ public class TemplateController {
      * @param map 封装了模块的id
      * @return 返回删除结果
      */
-    @RequestMapping("/template/deleteTemplate")
+    @RequestMapping("/template/delete")
     @ResponseBody
     public Object deleteTemplate(@RequestBody Map<String, String> map) {
         Long id = Long.parseLong(map.get("id"));

@@ -14,7 +14,6 @@ function getImageWidth(url,callback){
     }
 }
 Date.prototype.Format = function (fmt) {
-
     var o = {
         "M+": this.getMonth() + 1,
         "d+": this.getDate(),

@@ -28,48 +28,11 @@ public class UserInfoController {
     private Status status;
 
     /**
-     * 跳转接口请求页面的方法
-     *
-     * @return
-     */
-    @GetMapping("/url")
-    public String url() {
-        return "/urlApplication";
-    }
-
-    /**
-     * 根据用户申请的url判断该路径是否可用
-     *
-     * @param map 封装了url信息
-     * @return 该url可用返回true，否则返回错误信息
-     */
-    @PostMapping("/url/commit")
-    @ResponseBody
-    public Object urlCommit(@RequestBody Map<String, String> map) {
-        String url = map.get("url");
-
-        String email = ShiroUtil.getLoginUserEmail();
-        if (userService.isAppliedUrl(email)) {
-            status.setMessage("您已经申请过了，不可以再申请了");
-            return status;
-        }
-
-        if (userService.isUrlExists(url)) {
-            status.setMessage("该url已被使用，建议您换一个");
-        } else {
-            status.setMessage("true");
-            userService.addUrl(email, url);
-        }
-        return status;
-    }
-
-
-    /**
      * 跳转信息录入页面的方法
      *
      * @return
      */
-    @GetMapping("/info")
+    @GetMapping("/info/add")
     public String info() {
         return "/setInfo";
     }
@@ -81,7 +44,7 @@ public class UserInfoController {
      * @param errors   hibernate中的validate验证结果
      * @return
      */
-    @PostMapping("/info/commit")
+    @PostMapping("/info/addCommit")
     @ResponseBody
     public Object userInfoCommit(@RequestBody UserInfo userInfo, Errors errors) {
         if (errors.hasErrors()) {

@@ -63,29 +63,6 @@ public class UserRegisterController {
     }
 
     /**
-     * 验证码发送接口实现类，给指定的邮箱发送8位验证码
-     *
-     * @param map     封装了用户邮箱
-     * @param session 将验证码存储到session中
-     * @return 发送成功返回true，否则返回错误信息
-     */
-    @PostMapping("/register/verificationCodeCommit")
-    @ResponseBody
-    public Object verificationCodeCommit(@RequestBody Map<String, String> map, HttpSession session) {
-        String randCode = EmailUtil.randCode(8);
-        String email = map.get("email");
-        System.out.println(email);
-        session.setAttribute("CODE_IN_SESSION", randCode);
-        session.setMaxInactiveInterval(5 * 60);
-        if (EmailUtil.sendEmail(email, randCode)) {
-            status.setMessage("true");
-        } else {
-            status.setMessage("验证码发送失败");
-        }
-        return status;
-    }
-
-    /**
      * 提交用户注册信息
      *
      * @param user    将用户信息封装到user参数中

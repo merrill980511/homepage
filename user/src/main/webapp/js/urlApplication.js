@@ -15,7 +15,7 @@ $(function () {
     //用户申请域名
     function sendApply(urlApplyFor){
         $.ajax({
-            "url":"/user/url/commit",
+            "url":"/user/url/addCommit",
             "method":"post",
             "headers": {
                 "Content-Type": "application/json",
@@ -24,7 +24,7 @@ $(function () {
             "dataType":"json",
             "success":function(data){
                 if(data.message == "true"){
-                    location.href="/user/info";
+                    location.href="/user/info/add";
                     return true;
                 }else{
                     applayFrame.next().children("label").text(data.message);
