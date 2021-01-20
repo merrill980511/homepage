@@ -30,7 +30,7 @@
         <spring.version>5.1.3.RELEASE</spring.version>
 
         <!--json版本-->
-        <jackjson.version>2.9.7</jackjson.version>
+        <jackjson.version>2.12.1</jackjson.version>
 
         <!--shiro版本-->
         <shiro.version>1.4.0</shiro.version>
