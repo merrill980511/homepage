@@ -33,7 +33,7 @@
         <jackjson.version>2.9.7</jackjson.version>
 
         <!--shiro版本-->
-        <shiro.version>1.4.0</shiro.version>
+        <shiro.version>1.8.0</shiro.version>
     </properties>
 
     <dependencies>
